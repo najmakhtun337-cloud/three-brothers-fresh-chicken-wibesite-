@@ -1,0 +1,19 @@
+{
+  "name": "Three Brothers Fresh Chicken",
+  "short_name": "Three Brothers",
+  "description": "Fresh Chicken Delivery - Naruli Bazar, North 24 Parganas",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff8e8",
+  "theme_color": "#d71920",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
