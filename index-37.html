@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#d71920">
+<meta name="description" content="Three Brothers Fresh Chicken — Naruli Bazar, North 24 Parganas. টাটকা মুরগি, পরিষ্কার কাটিং ও Home Delivery.">
+<title>Three Brothers Fresh Chicken | টাটকা মুরগি</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap');
+
+:root{
+  --red:#d71920;
+  --red2:#b90f16;
+  --yellow:#ffd83d;
+  --cream:#f8f1df;
+  --paper:#fffaf0;
+  --ink:#111827;
+  --navy:#13263a;
+  --green:#123d31;
+  --white:#fff;
+  --muted:#667085;
+  --line:rgba(17,24,39,.12);
+  --shadow:0 18px 45px rgba(17,24,39,.12);
+  --radius:22px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Noto Sans Bengali",system-ui,sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.7;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+.topbar{
+  background:var(--ink);
+  color:#fff;
+  padding:9px 18px;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.ticker{
+  display:flex;
+  justify-content:center;
+  gap:35px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+.ticker span:nth-child(2){color:var(--yellow)}
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(248,241,223,.94);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+  transition:.3s;
+}
+.header.scrolled{box-shadow:0 10px 35px rgba(0,0,0,.12)}
+.nav{
+  max-width:1250px;
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-logo{
+  width:52px;height:52px;border-radius:50%;
+  background:var(--red);color:#fff;
+  display:grid;place-items:center;
+  font:900 29px Georgia,serif;
+  box-shadow:6px 6px 0 var(--yellow);
+}
+.brand-text strong{
+  display:block;
+  font-size:15px;
+  letter-spacing:2px;
+  line-height:1.15;
+}
+.brand-text small{
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+.navlinks{display:flex;gap:24px;font-size:13px;font-weight:800}
+.navlinks a:hover{color:var(--red)}
+.menu-btn,.cart-btn{
+  border:0;background:var(--ink);color:#fff;
+  border-radius:12px;padding:10px 14px;font-weight:900;
+}
+.cart-btn{background:var(--red);position:relative}
+.cart-count{
+  position:absolute;right:-7px;top:-8px;
+  min-width:22px;height:22px;border-radius:50%;
+  background:var(--yellow);color:var(--ink);
+  display:grid;place-items:center;font-size:11px;
+}
+.menu-btn{display:none}
+
+.hero{
+  max-width:1250px;
+  margin:auto;
+  padding:65px 20px 45px;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:35px;
+  align-items:center;
+}
+.eyebrow{
+  display:inline-block;
+  font-size:12px;font-weight:900;
+  letter-spacing:2px;
+  margin-bottom:14px;
+}
+.hero h1{
+  font-family:"Playfair Display","Noto Sans Bengali",serif;
+  font-size:clamp(48px,7vw,86px);
+  line-height:1.02;
+  letter-spacing:-2px;
+  margin-bottom:22px;
+}
+.hero h1 span{color:var(--red)}
+.hero p{max-width:650px;color:#4b5563;font-size:17px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{
+  border:0;border-radius:14px;
+  padding:13px 20px;font-weight:900;
+  transition:.25s;display:inline-flex;
+  align-items:center;justify-content:center;gap:8px;
+}
+.btn:hover{transform:translateY(-3px)}
+.btn-red{background:var(--red);color:#fff;box-shadow:8px 8px 0 var(--yellow)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-yellow{background:var(--yellow);color:var(--ink)}
+.hero-art{
+  min-height:470px;
+  border-radius:40px;
+  background:
+    linear-gradient(145deg,rgba(0,0,0,.02),rgba(0,0,0,.25)),
+    url("https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=1000&q=85")
+    center/cover;
+  position:relative;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.hero-badge{
+  position:absolute;left:20px;bottom:20px;
+  background:var(--yellow);
+  padding:15px 18px;border-radius:18px;
+  font-weight:900;max-width:230px;
+}
+.hero-stamp{
+  position:absolute;right:20px;top:20px;
+  width:105px;height:105px;border-radius:50%;
+  background:var(--red);color:#fff;
+  display:grid;place-items:center;text-align:center;
+  font-size:12px;font-weight:900;
+  transform:rotate(10deg);
+}
+
+.section{padding:75px 20px}
+.container{max-width:1250px;margin:auto}
+.section-head{
+  display:flex;justify-content:space-between;
+  align-items:end;gap:20px;margin-bottom:30px;
+}
+.kicker{font-size:11px;font-weight:900;letter-spacing:2px}
+.section h2{
+  font-family:"Playfair Display","Noto Sans Bengali",serif;
+  font-size:clamp(36px,5vw,64px);
+  line-height:1.05;margin-top:6px;
+}
+.muted{color:var(--muted)}
+
+.trust{
+  background:var(--yellow);
+  padding:35px 20px;
+}
+.trust-grid{
+  max-width:1250px;margin:auto;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+.trust-item{
+  padding:20px;border-left:3px solid var(--ink);
+}
+.trust-item b{display:block;font-size:18px}
+
+.features{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+}
+.feature{
+  min-height:270px;padding:28px;border-radius:26px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  box-shadow:var(--shadow);
+}
+.feature.yellow{background:var(--yellow)}
+.feature.red{background:var(--red);color:#fff}
+.feature.green{background:var(--green);color:#fff}
+.feature h3{
+  font-family:"Playfair Display",serif;
+  font-size:30px;line-height:1.1;
+}
+.feature-icon{font-size:40px}
+
+.shop-tools{
+  display:flex;gap:10px;flex-wrap:wrap;
+  margin-bottom:25px;
+}
+.search{
+  flex:1;min-width:220px;
+  border:2px solid var(--line);
+  background:#fff;border-radius:14px;
+  padding:13px 16px;outline:none;
+}
+.search:focus{border-color:var(--red)}
+.chip{
+  border:1px solid var(--line);
+  background:#fff;padding:11px 15px;
+  border-radius:12px;font-weight:800;
+}
+.chip.active,.chip:hover{background:var(--red);color:#fff}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+.product{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 8px 25px rgba(0,0,0,.06);
+  transition:.3s;
+}
+.product:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.product-img{height:205px;position:relative;overflow:hidden}
+.product-img img{width:100%;height:100%;object-fit:cover}
+.product-tag{
+  position:absolute;top:12px;left:12px;
+  background:var(--yellow);padding:5px 9px;
+  border-radius:8px;font-size:11px;font-weight:900;
+}
+.product-body{padding:18px}
+.product h3{font-size:19px;margin-bottom:4px}
+.price{font-size:22px;color:var(--red);font-weight:900}
+.price small{font-size:12px;color:var(--muted)}
+.product-actions{
+  display:flex;gap:8px;margin-top:13px;
+}
+.add{
+  flex:1;border:0;border-radius:11px;
+  background:var(--ink);color:#fff;padding:10px;
+  font-weight:900;
+}
+.add:hover{background:var(--red)}
+.qty{
+  display:flex;align-items:center;
+  border:1px solid var(--line);
+  border-radius:11px;overflow:hidden;
+}
+.qty button{border:0;background:#f3f4f6;width:34px;height:38px;font-weight:900}
+.qty span{min-width:35px;text-align:center;font-weight:900}
+
+.steps{
+  background:var(--ink);color:#fff;
+}
+.steps-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+}
+.step{
+  border:1px solid rgba(255,255,255,.15);
+  padding:26px;border-radius:22px;
+}
+.step-no{
+  color:var(--yellow);
+  font:900 48px Georgia,serif;
+}
+.step h3{font-size:22px;margin:8px 0}
+
+.offer{
+  background:var(--red);color:#fff;
+  border-radius:32px;padding:40px;
+  display:flex;justify-content:space-between;
+  align-items:center;gap:25px;
+}
+.offer h2{font-family:"Playfair Display",serif;font-size:48px;line-height:1.05}
+.timer{display:flex;gap:8px}
+.timebox{
+  min-width:62px;padding:10px;
+  background:rgba(255,255,255,.13);
+  border-radius:12px;text-align:center;
+}
+.timebox b{display:block;font-size:22px}
+
+.gallery{
+  display:grid;grid-template-columns:2fr 1fr 1fr;
+  gap:12px;
+}
+.gallery img{
+  width:100%;height:220px;object-fit:cover;
+  border-radius:18px;
+}
+.gallery img:first-child{height:452px;grid-row:span 2}
+
+.reviews{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+}
+.review{
+  background:#fff;border-radius:20px;padding:25px;
+  border:1px solid var(--line);
+}
+.stars{color:#e5a900;letter-spacing:2px}
+.review b{display:block;margin-top:15px}
+
+.location{
+  background:var(--green);color:#fff;
+}
+.location-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:25px;align-items:stretch;
+}
+.map{
+  min-height:390px;border-radius:25px;
+  overflow:hidden;border:5px solid rgba(255,255,255,.12);
+}
+.map iframe{width:100%;height:100%;min-height:380px;border:0}
+.contact-card{
+  padding:30px;border:1px solid rgba(255,255,255,.15);
+  border-radius:25px;
+}
+.contact-line{
+  padding:15px 0;border-bottom:1px solid rgba(255,255,255,.12);
+}
+.contact-line span{display:block;color:#b9c7c1;font-size:12px}
+
+.faq{max-width:850px;margin:auto}
+.faq-item{
+  background:#fff;border:1px solid var(--line);
+  margin-bottom:10px;border-radius:15px;overflow:hidden;
+}
+.faq-q{
+  width:100%;border:0;background:#fff;
+  padding:18px;text-align:left;
+  font-weight:900;display:flex;
+  justify-content:space-between;
+}
+.faq-a{display:none;padding:0 18px 18px;color:var(--muted)}
+.faq-item.open .faq-a{display:block}
+
+.footer{
+  background:#0b1118;color:#fff;
+  padding:55px 20px 25px;
+}
+.footer-grid{
+  max-width:1250px;margin:auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px;
+}
+.footer h3{
+  font-family:"Playfair Display",serif;
+  font-size:30px;
+}
+.footer a{display:block;color:#bdc6ce;margin:7px 0}
+.footer a:hover{color:#fff}
+.copyright{
+  max-width:1250px;margin:35px auto 0;
+  padding-top:20px;border-top:1px solid rgba(255,255,255,.1);
+  color:#89939d;font-size:12px;
+}
+
+.cart-drawer{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:2000;
+  opacity:0;visibility:hidden;
+  transition:.25s;
+}
+.cart-drawer.open{opacity:1;visibility:visible}
+.cart-panel{
+  position:absolute;right:0;top:0;
+  width:min(470px,100%);
+  height:100%;background:var(--paper);
+  padding:25px;overflow:auto;
+  transform:translateX(100%);
+  transition:.3s;
+}
+.cart-drawer.open .cart-panel{transform:translateX(0)}
+.cart-head{
+  display:flex;justify-content:space-between;
+  align-items:center;margin-bottom:20px;
+}
+.close{
+  border:0;background:#eee;width:40px;height:40px;
+  border-radius:50%;font-size:20px;
+}
+.cart-item{
+  display:grid;grid-template-columns:70px 1fr auto;
+  gap:12px;padding:13px 0;
+  border-bottom:1px solid var(--line);
+}
+.cart-item img{
+  width:70px;height:60px;object-fit:cover;border-radius:10px;
+}
+.cart-total{
+  margin-top:20px;background:#fff;
+  border-radius:18px;padding:18px;
+}
+.total-row{
+  display:flex;justify-content:space-between;
+  padding:6px 0;
+}
+.total-row.final{
+  border-top:1px solid var(--line);
+  margin-top:8px;padding-top:13px;
+  font-size:21px;font-weight:900;
+}
+.empty{text-align:center;padding:60px 15px;color:var(--muted)}
+
+.modal{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.6);
+  z-index:3000;display:none;
+  place-items:center;padding:15px;
+}
+.modal.open{display:grid}
+.modal-box{
+  background:var(--paper);
+  width:min(650px,100%);
+  max-height:92vh;overflow:auto;
+  border-radius:25px;padding:25px;
+}
+.form-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+}
+.field{margin-bottom:13px}
+.field.full{grid-column:1/-1}
+.field label{
+  display:block;font-size:12px;
+  font-weight:900;margin-bottom:5px;
+}
+.field input,.field textarea,.field select{
+  width:100%;border:1px solid var(--line);
+  background:#fff;border-radius:11px;
+  padding:12px;outline:none;
+}
+.field textarea{min-height:85px;resize:vertical}
+
+.success-box{text-align:center;padding:20px}
+.success-icon{
+  width:80px;height:80px;border-radius:50%;
+  background:#dff6e9;color:#16804a;
+  display:grid;place-items:center;
+  font-size:40px;margin:0 auto 15px;
+}
+
+.floating-cart{
+  position:fixed;right:18px;bottom:18px;
+  z-index:1500;width:58px;height:58px;
+  border-radius:50%;border:0;
+  background:var(--red);color:#fff;
+  font-size:23px;box-shadow:var(--shadow);
+}
+.floating-cart span{
+  position:absolute;right:-3px;top:-5px;
+  background:var(--yellow);color:var(--ink);
+  min-width:21px;height:21px;border-radius:50%;
+  font-size:10px;display:grid;place-items:center;font-weight:900;
+}
+.quick{
+  position:fixed;left:16px;bottom:18px;
+  z-index:1500;display:flex;flex-direction:column;gap:8px;
+}
+.quick button{
+  width:45px;height:45px;border:0;border-radius:50%;
+  color:#fff;font-weight:900;box-shadow:0 7px 20px rgba(0,0,0,.2);
+}
+.quick .wa{background:#20b35b}
+.quick .call{background:#1d5fd1}
+
+.toast{
+  position:fixed;left:50%;bottom:85px;
+  transform:translate(-50%,20px);
+  background:var(--ink);color:#fff;
+  padding:11px 18px;border-radius:12px;
+  z-index:5000;opacity:0;visibility:hidden;
+  transition:.3s;font-weight:800;font-size:13px;
+}
+.toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+
+.back-top{
+  position:fixed;right:18px;bottom:90px;
+  width:45px;height:45px;border:0;
+  border-radius:50%;background:var(--ink);color:#fff;
+  z-index:1400;opacity:0;visibility:hidden;
+}
+.back-top.show{opacity:1;visibility:visible}
+
+.reveal{
+  opacity:0;transform:translateY(25px);
+  transition:.7s ease;
+}
+.reveal.show{opacity:1;transform:none}
+
+@media(max-width:1000px){
+  .products{grid-template-columns:repeat(3,1fr)}
+  .hero{grid-template-columns:1fr}
+  .hero-art{min-height:420px}
+  .features,.reviews,.steps-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  .navlinks{display:none}
+  .menu-btn{display:block}
+  .navlinks.mobile-open{
+    display:flex;position:absolute;
+    left:15px;right:15px;top:80px;
+    background:var(--paper);padding:18px;
+    flex-direction:column;border-radius:15px;
+    box-shadow:var(--shadow);
+  }
+  .products{grid-template-columns:1fr 1fr}
+  .features,.reviews,.steps-grid,
+  .location-grid,.footer-grid{grid-template-columns:1fr}
+  .trust-grid{grid-template-columns:1fr}
+  .offer{flex-direction:column;align-items:flex-start}
+  .offer h2{font-size:38px}
+  .gallery{grid-template-columns:1fr 1fr}
+  .gallery img:first-child{height:250px;grid-column:1/-1;grid-row:auto}
+  .gallery img{height:160px}
+  .hero{padding-top:40px}
+  .hero-art{min-height:350px}
+  .section{padding:55px 15px}
+}
+@media(max-width:470px){
+  .products{grid-template-columns:1fr}
+  .product-img{height:230px}
+  .ticker{justify-content:flex-start}
+  .hero h1{font-size:47px}
+  .form-grid{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="ticker">
+    <span>প্রতিদিন টাটকা মুরগি — NARULI BAZAR</span>
+    <span>● HOME DELIVERY AVAILABLE</span>
+    <span>ফোন করুন: 8637575166</span>
+  </div>
+</div>
+
+<header class="header" id="header">
+  <nav class="nav">
+    <a href="#home" class="brand">
+      <div class="brand-logo">3</div>
+      <div class="brand-text">
+        <strong>THREE BROTHERS</strong>
+        <small>FRESH CHICKEN</small>
+      </div>
+    </a>
+
+    <div class="navlinks" id="navlinks">
+      <a href="#home">হোম</a>
+      <a href="#products">মুরগি</a>
+      <a href="#why">কেন আমরা</a>
+      <a href="#location">ঠিকানা</a>
+      <a href="#faq">জিজ্ঞাসা</a>
+    </div>
+
+    <div style="display:flex;gap:8px">
+      <button class="cart-btn" onclick="openCart()">🛒 কার্ট <span class="cart-count" id="cartCount">0</span></button>
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div>
+    <div class="eyebrow">আমাদের দোকান, আপনার ভরসা</div>
+    <h1>টাটকা মুরগি<br><span>আজই নিন ঘরে</span></h1>
+    <p>
+      Naruli Bazar-এর Three Brothers Fresh Chicken-এ
+      প্রতিদিনের জন্য টাটকা মুরগি, পরিষ্কার কাটিং এবং
+      সহজ Home Delivery।
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn btn-red" onclick="scrollToProducts()">🐔 মুরগি বাছুন</button>
+      <button class="btn btn-dark" onclick="callShop()">☎ ফোন করুন</button>
+      <button class="btn btn-yellow" onclick="openWhatsApp()">WhatsApp</button>
+    </div>
+  </div>
+
+  <div class="hero-art">
+    <div class="hero-stamp">FRESH<br>EVERY<br>DAY</div>
+    <div class="hero-badge">
+      📍 Naruli Bazar<br>
+      North 24 Parganas<br>
+      <small>Home Delivery Available</small>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="trust-grid">
+    <div class="trust-item">
+      <b>✓ টাটকা মুরগি</b>
+      প্রতিদিনের জন্য fresh stock।
+    </div>
+    <div class="trust-item">
+      <b>✓ পরিষ্কার কাটিং</b>
+      আপনার প্রয়োজন অনুযায়ী কাটিং।
+    </div>
+    <div class="trust-item">
+      <b>✓ লোকাল Home Delivery</b>
+      Naruli Bazar ও আশেপাশের এলাকায়।
+    </div>
+  </div>
+</section>
+
+<section class="section" id="why">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="kicker">WHY THREE BROTHERS</div>
+        <h2>দোকানটা হোক<br>একটু নিজের মতো।</h2>
+      </div>
+      <p class="muted">ভালো মুরগি, পরিষ্কার কাজ,<br>আর পরিচিত মানুষের মতো ব্যবহার।</p>
+    </div>
+
+    <div class="features">
+      <article class="feature yellow reveal">
+        <div class="feature-icon">👀</div>
+        <div>
+          <h3>আপনি যা নেবেন, সেটাই দেখুন।</h3>
+          <p>অর্ডারের আগে পছন্দের কাটিং ও পরিমাণ ঠিক করুন।</p>
+        </div>
+      </article>
+
+      <article class="feature red reveal">
+        <div class="feature-icon">🐔</div>
+        <div>
+          <h3>Freshness নিয়ে কোনো আপস নয়।</h3>
+          <p>প্রতিদিনের প্রয়োজন অনুযায়ী fresh chicken stock রাখার চেষ্টা করি।</p>
+        </div>
+      </article>
+
+      <article class="feature green reveal">
+        <div class="feature-icon">☎</div>
+        <div>
+          <h3>যেকোনো প্রশ্ন করুন।</h3>
+          <p>ফোন বা WhatsApp-এ সরাসরি আমাদের সঙ্গে কথা বলুন।</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="products">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="kicker">OUR PRODUCTS</div>
+        <h2>মুরগি বাছুন</h2>
+      </div>
+      <p class="muted">যা লাগবে এখান থেকেই নিন।</p>
+    </div>
+
+    <div class="shop-tools">
+      <input class="search" id="search" placeholder="🔎 মুরগির নাম খুঁজুন...">
+      <button class="chip active" data-filter="all" onclick="setFilter('all',this)">সব</button>
+      <button class="chip" data-filter="regular" onclick="setFilter('regular',this)">সাধারণ</button>
+      <button class="chip" data-filter="special" onclick="setFilter('special',this)">বিশেষ</button>
+    </div>
+
+    <div class="products" id="productsGrid"></div>
+  </div>
+</section>
+
+<section class="section steps">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="kicker">HOW TO ORDER</div>
+        <h2>অর্ডার করা<br>একদম সহজ।</h2>
+      </div>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step reveal">
+        <div class="step-no">01</div>
+        <h3>মুরগি বাছুন</h3>
+        <p>আপনার প্রয়োজনের item এবং quantity কার্টে যোগ করুন।</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-no">02</div>
+        <h3>ঠিকানা দিন</h3>
+        <p>নাম, ফোন, delivery area ও ঠিকানা লিখুন।</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-no">03</div>
+        <h3>অর্ডার পাঠান</h3>
+        <p>WhatsApp-এ order details পাঠিয়ে আমাদের confirmation নিন।</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="offer">
+      <div>
+        <div class="kicker">TODAY'S SPECIAL</div>
+        <h2>আজকের fresh<br>order window</h2>
+        <p>সকাল ৮টা থেকে রাত ১০টা পর্যন্ত অর্ডার নেওয়া হয়।</p>
+      </div>
+      <div>
+        <div class="timer">
+          <div class="timebox"><b id="hours">00</b><small>ঘণ্টা</small></div>
+          <div class="timebox"><b id="mins">00</b><small>মিনিট</small></div>
+          <div class="timebox"><b id="secs">00</b><small>সেকেন্ড</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="kicker">OUR SHOP</div>
+        <h2>দোকানের কিছু মুহূর্ত</h2>
+      </div>
+    </div>
+
+    <div class="gallery">
+      <img class="reveal" src="https://ormondmeats.com/cdn/shop/files/wholechicken2.jpg?v=1715265373&width=1445" alt="White broiler whole chicken">
+      <img class="reveal" src="https://cdn.pixabay.com/photo/2022/01/13/19/12/dressed-chicken-6935865_1280.jpg" alt="Chicken">
+      <img class="reveal" src="https://files.catbox.moe/vwztaa.jpg" alt="Fresh meat">
+      <img class="reveal" src="https://images.unsplash.com/photo-1633096013004-e2cb4023b560?auto=format&fit=crop&w=1000&q=85" alt="Food">
+      <img class="reveal" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Preparing_Chicken_Liver_02.JPG" alt="Raw chicken liver">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="kicker">CUSTOMER VOICE</div>
+        <h2>নমুনা মতামত</h2>
+      </div>
+      <p class="muted">এগুলো ডিজাইনের নমুনা।</p>
+    </div>
+
+    <div class="reviews">
+      <div class="review reveal">
+        <div class="stars">★★★★★</div>
+        <p>“কাটিং পরিষ্কার ছিল এবং order নেওয়ার সময় খুব সহজে কথা বলা গেছে।”</p>
+        <b>— স্থানীয় ক্রেতা</b>
+      </div>
+      <div class="review reveal">
+        <div class="stars">★★★★★</div>
+        <p>“বাসায় delivery নেওয়ার সুবিধাটা ভালো লেগেছে।”</p>
+        <b>— স্থানীয় ক্রেতা</b>
+      </div>
+      <div class="review reveal">
+        <div class="stars">★★★★★</div>
+        <p>“দাম আগে থেকেই দেখা যায়, তাই order করা সহজ।”</p>
+        <b>— স্থানীয় ক্রেতা</b>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="location">
+  <div class="container">
+    <div class="location-grid">
+      <div class="map">
+        <iframe
+          loading="lazy"
+          src="https://www.google.com/maps?q=Naruli+Bazar+North+24+Parganas&output=embed">
+        </iframe>
+      </div>
+
+      <div class="contact-card">
+        <div class="kicker">COME VISIT US</div>
+        <h2 style="font-family:'Playfair Display',serif;font-size:46px;line-height:1.05;margin:10px 0 20px">
+          Naruli Bazar-এ দেখা হবে।
+        </h2>
+
+        <div class="contact-line">
+          <span>ঠিকানা</span>
+          Naruli Bazar, North 24 Parganas
+        </div>
+
+        <div class="contact-line">
+          <span>ফোন</span>
+          8637575166
+        </div>
+
+        <div class="contact-line">
+          <span>সময়</span>
+          সকাল ৮টা — রাত ১০টা
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px">
+          <button class="btn btn-yellow" onclick="openMap()">📍 Google Maps</button>
+          <button class="btn" style="background:#20b35b;color:#fff" onclick="openWhatsApp()">WhatsApp</button>
+          <button class="btn" style="background:#fff;color:#111" onclick="callShop()">☎ কল করুন</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="kicker">FAQ</div>
+        <h2>সাধারণ কিছু প্রশ্ন</h2>
+      </div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Home Delivery আছে? <span>+</span></button>
+        <div class="faq-a">হ্যাঁ। Naruli Bazar-এর জন্য delivery charge ₹30 এবং অন্যান্য এলাকার জন্য ₹50 ধরা হয়েছে।</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">কীভাবে order করব? <span>+</span></button>
+        <div class="faq-a">মুরগি বাছুন → কার্টে যোগ করুন → checkout-এ আপনার তথ্য দিন → WhatsApp-এ order পাঠান।</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">কখন দোকান খোলা থাকে? <span>+</span></button>
+        <div class="faq-a">সাধারণ সময় সকাল ৮টা থেকে রাত ১০টা।</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">দাম কোথায় দেখা যাবে? <span>+</span></button>
+        <div class="faq-a">নিচের product list-এ প্রতিটি item-এর প্রতি কেজির দাম দেখা যাবে।</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <h3>THREE BROTHERS<br>FRESH CHICKEN</h3>
+      <p style="color:#bdc6ce;margin-top:12px">
+        Naruli Bazar-এর জন্য টাটকা মুরগি,
+        পরিষ্কার কাটিং এবং সহজ delivery service।
+      </p>
+    </div>
+    <div>
+      <b>দ্রুত লিংক</b>
+      <a href="#home">হোম</a>
+      <a href="#products">মুরগি</a>
+      <a href="#why">কেন আমরা</a>
+      <a href="#location">ঠিকানা</a>
+    </div>
+    <div>
+      <b>যোগাযোগ</b>
+      <a href="tel:+918637575166">☎ 8637575166</a>
+      <a href="#" onclick="openWhatsApp();return false">WhatsApp</a>
+      <a href="#" onclick="openMap();return false">Google Maps</a>
+    </div>
+  </div>
+
+  <div class="copyright">
+    © <span id="year"></span> Three Brothers Fresh Chicken · Naruli Bazar
+  </div>
+<div style="margin-top:14px;font-size:12px;opacity:.72;line-height:1.6">Product photo credit: raw chicken liver photo by Poupou l'quourouce, <a href="https://commons.wikimedia.org/wiki/File:Preparing_Chicken_Liver_02.JPG" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</div>
+</footer>
+
+<button class="floating-cart" onclick="openCart()">
+  🛒 <span id="floatingCount">0</span>
+</button>
+
+<div class="quick">
+  <button class="wa" onclick="openWhatsApp()">W</button>
+  <button class="call" onclick="callShop()">☎</button>
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<div class="toast" id="toast"></div>
+
+<!-- CART -->
+<div class="cart-drawer" id="cartDrawer" onclick="closeCartOutside(event)">
+  <div class="cart-panel">
+    <div class="cart-head">
+      <div>
+        <div class="kicker">YOUR ORDER</div>
+        <h2>আপনার কার্ট</h2>
+      </div>
+      <button class="close" onclick="closeCart()">×</button>
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div id="cartSummary" class="cart-total" style="display:none">
+      <div class="total-row"><span>মোট</span><b id="subtotal">₹0</b></div>
+      <div class="total-row"><span>ডেলিভারি</span><b id="delivery">₹0</b></div>
+      <div class="total-row final"><span>সর্বমোট</span><b id="grandTotal">₹0</b></div>
+      <button class="btn btn-red" style="width:100%;margin-top:14px" onclick="openCheckout()">Checkout →</button>
+      <button class="btn" style="width:100%;margin-top:8px;background:#eee" onclick="clearCart()">কার্ট খালি করুন</button>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT -->
+<div class="modal" id="checkoutModal">
+  <div class="modal-box">
+    <div class="cart-head">
+      <div>
+        <div class="kicker">CHECKOUT</div>
+        <h2>অর্ডারের তথ্য</h2>
+      </div>
+      <button class="close" onclick="closeCheckout()">×</button>
+    </div>
+
+    <form id="checkoutForm">
+      <div class="form-grid">
+        <div class="field">
+          <label>আপনার নাম *</label>
+          <input id="customerName" required placeholder="নাম লিখুন">
+        </div>
+
+        <div class="field">
+          <label>মোবাইল নম্বর *</label>
+          <input id="customerPhone" required inputmode="numeric" maxlength="10" placeholder="10 digit mobile">
+        </div>
+
+        <div class="field">
+          <label>এলাকা *</label>
+          <select id="area" required>
+            <option value="">এলাকা বাছুন</option>
+            <option value="naruli">Naruli Bazar — ₹30</option>
+            <option value="other">অন্যান্য এলাকা — ₹50</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Payment</label>
+          <select id="payment">
+            <option>Cash on Delivery</option>
+            <option>UPI / পরে কথা হবে</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label>সম্পূর্ণ ঠিকানা *</label>
+          <textarea id="address" required placeholder="বাড়ি/রোড/ল্যান্ডমার্ক লিখুন"></textarea>
+        </div>
+
+        <div class="field full">
+          <label>অতিরিক্ত নির্দেশনা</label>
+          <textarea id="note" placeholder="যেমন: skinless / ছোট টুকরো / নির্দিষ্ট কাটিং"></textarea>
+        </div>
+      </div>
+
+      <div class="cart-total">
+        <div class="total-row"><span>মোট</span><b id="checkoutSubtotal">₹0</b></div>
+        <div class="total-row"><span>ডেলিভারি</span><b id="checkoutDelivery">₹0</b></div>
+        <div class="total-row final"><span>সর্বমোট</span><b id="checkoutTotal">₹0</b></div>
+      </div>
+
+      <button class="btn btn-red" type="submit" style="width:100%;margin-top:15px">
+        WhatsApp-এ অর্ডার পাঠান →
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="modal" id="successModal">
+  <div class="modal-box success-box">
+    <div class="success-icon">✓</div>
+    <h2>অর্ডার তৈরি হয়েছে!</h2>
+    <p class="muted">আপনার Order ID:</p>
+    <h3 id="successOrderId" style="font-size:25px;margin:5px 0 15px"></h3>
+    <p>WhatsApp-এ order details পাঠানো হবে।</p>
+    <button class="btn btn-red" style="width:100%;margin-top:18px" onclick="sendPendingWhatsApp()">WhatsApp-এ পাঠান</button>
+    <button class="btn" style="width:100%;margin-top:8px;background:#eee" onclick="closeSuccess()">বন্ধ করুন</button>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = "PASTE_YOUR_SUPABASE_PROJECT_URL_HERE";
+const SUPABASE_ANON_KEY = "PASTE_YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY_HERE";
+const SUPABASE_ENABLED = !SUPABASE_URL.includes("PASTE_") && !SUPABASE_ANON_KEY.includes("PASTE_");
+const sb = SUPABASE_ENABLED ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+const SHOP={
+  name:"Three Brothers Fresh Chicken",
+  phone:"8637575166",
+  whatsapp:"918637575166",
+  address:"Naruli Bazar, North 24 Parganas",
+  map:"https://www.google.com/maps/search/?api=1&query=Naruli+Bazar+North+24+Parganas"
+};
+
+let products=[
+  {
+    id:"live",
+    name:"Live Chicken",
+    price:220,
+    category:"regular",
+    image:"https://tiimg.tistatic.com/fp/1/007/858/white-pure-and-natural-broiler-chicken-282.jpg",
+    tag:"জনপ্রিয়"
+  },
+  {
+    id:"dressed",
+    name:"Dressed Chicken",
+    price:260,
+    category:"regular",
+    image:"https://cdn.pixabay.com/photo/2022/01/13/19/12/dressed-chicken-6935865_1280.jpg",
+    tag:"Fresh"
+  },
+  {
+    id:"skinless",
+    name:"Skinless Chicken",
+    price:290,
+    category:"special",
+    image:"https://files.catbox.moe/vwztaa.jpg",
+    tag:"চাহিদার"
+  },
+  {
+    id:"boneless",
+    name:"Boneless Chicken",
+    price:360,
+    category:"special",
+    image:"https://images.unsplash.com/photo-1633096013004-e2cb4023b560?auto=format&fit=crop&w=1000&q=85",
+    tag:"Premium"
+  },
+  {
+    id:"liver",
+    name:"Chicken Liver",
+    price:180,
+    category:"regular",
+    image:"https://upload.wikimedia.org/wikipedia/commons/e/e7/Preparing_Chicken_Liver_02.JPG",
+    tag:"Fresh"
+  },
+  {
+    id:"roasted",
+    name:"Roasted Chicken",
+    price:240,
+    category:"special",
+    image:"https://files.catbox.moe/goufws.jpg",
+    tag:"New"
+  }
+];
+
+let cart=JSON.parse(localStorage.getItem("threeBrothersCart")||"[]");
+let currentFilter="all";
+let pendingWhatsApp="";
+
+function money(n){
+  return "₹"+Number(n).toLocaleString("en-IN");
+}
+
+function saveCart(){
+  localStorage.setItem("threeBrothersCart",JSON.stringify(cart));
+  updateCartUI();
+}
+
+async function loadProductsFromSupabase(){
+  if(!SUPABASE_ENABLED) return;
+  try{
+    const {data,error}=await sb
+      .from("products")
+      .select("id,name,price,active,sort_order")
+      .eq("active",true)
+      .order("sort_order",{ascending:true});
+
+    if(error) throw error;
+    if(!Array.isArray(data) || !data.length) return;
+
+    const byId=Object.fromEntries(data.map(p=>[String(p.id),p]));
+    products=products
+      .filter(p=>!byId[p.id] || byId[p.id].active !== false)
+      .map(p=>byId[p.id] ? {...p,name:byId[p.id].name || p.name,price:Number(byId[p.id].price)} : p);
+
+    // If the admin panel has added a new known product, append it while keeping its image.
+    const existingIds=new Set(products.map(p=>p.id));
+    data.forEach(row=>{
+      if(!existingIds.has(String(row.id))){
+        products.push({
+          id:String(row.id), name:row.name, price:Number(row.price), category:"special",
+          image:"", tag:"New"
+        });
+      }
+    });
+
+    renderProducts();
+    updateCartUI();
+  }catch(err){
+    console.warn("Supabase products load failed; using built-in prices.",err);
+  }
+}
+
+function renderProducts(){
+  const grid=document.getElementById("productsGrid");
+  const search=(document.getElementById("search").value||"").toLowerCase();
+
+  const list=products.filter(p=>{
+    const filterOk=currentFilter==="all"||p.category===currentFilter;
+    const searchOk=p.name.toLowerCase().includes(search);
+    return filterOk&&searchOk;
+  });
+
+  if(!list.length){
+    grid.innerHTML='<div class="empty" style="grid-column:1/-1">কোনো পণ্য পাওয়া যায়নি।</div>';
+    return;
+  }
+
+  grid.innerHTML=list.map(p=>{
+    const item=cart.find(x=>x.id===p.id);
+    const qty=item?item.qty:0;
+
+    return `
+      <article class="product reveal show">
+        <div class="product-img">
+          <img src="${p.image}" alt="${p.name}" loading="lazy">
+          <span class="product-tag">${p.tag}</span>
+        </div>
+        <div class="product-body">
+          <h3>${p.name}</h3>
+          <div class="price">${money(p.price)} <small>/ kg</small></div>
+          <div class="product-actions">
+            <button class="add" onclick="addToCart('${p.id}')">কার্টে যোগ করুন</button>
+            <div class="qty">
+              <button onclick="changeQty('${p.id}',-1)">−</button>
+              <span>${qty}</span>
+              <button onclick="changeQty('${p.id}',1)">+</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+  });
+}
+
+function setFilter(filter,btn){
+  currentFilter=filter;
+  document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));
+  btn.classList.add("active");
+  renderProducts();
+}
+
+function addToCart(id){
+  const p=products.find(x=>x.id===id);
+  if(!p)return;
+
+  const item=cart.find(x=>x.id===id);
+
+  if(item)item.qty++;
+  else cart.push({id:p.id,qty:1});
+
+  saveCart();
+  renderProducts();
+  showToast(p.name+" কার্টে যোগ হয়েছে ✓");
+}
+
+function changeQty(id,delta){
+  const item=cart.find(x=>x.id===id);
+  if(!item){
+    if(delta>0)addToCart(id);
+    return;
+  }
+
+  item.qty+=delta;
+
+  if(item.qty<=0){
+    cart=cart.filter(x=>x.id!==id);
+  }
+
+  saveCart();
+  renderProducts();
+}
+
+function clearCart(){
+  cart=[];
+  saveCart();
+  renderProducts();
+  showToast("কার্ট খালি করা হয়েছে");
+}
+
+function getSubtotal(){
+  return cart.reduce((sum,item)=>{
+    const p=products.find(x=>x.id===item.id);
+    return sum+(p?p.price*item.qty:0);
+  },0);
+}
+
+function getDelivery(){
+  const area=document.getElementById("area");
+  if(area && area.value==="naruli")return 30;
+  return 50;
+}
+
+function updateCartUI(){
+  const count=cart.reduce((s,x)=>s+x.qty,0);
+  document.getElementById("cartCount").textContent=count;
+  document.getElementById("floatingCount").textContent=count;
+
+  const box=document.getElementById("cartItems");
+  const summary=document.getElementById("cartSummary");
+
+  if(!cart.length){
+    box.innerHTML='<div class="empty">🛒<br><br>আপনার কার্ট এখনো খালি।<br>মুরগি বেছে কার্টে যোগ করুন।</div>';
+    summary.style.display="none";
+    return;
+  }
+
+  box.innerHTML=cart.map(item=>{
+    const p=products.find(x=>x.id===item.id);
+    if(!p)return "";
+
+    return `
+      <div class="cart-item">
+        <img src="${p.image}" alt="${p.name}">
+        <div>
+          <b>${p.name}</b>
+          <div>${money(p.price)} × ${item.qty}</div>
+          <div style="margin-top:5px">
+            <button class="chip" onclick="changeQty('${p.id}',-1)">−</button>
+            <button class="chip" onclick="changeQty('${p.id}',1)">+</button>
+          </div>
+        </div>
+        <b>${money(p.price*item.qty)}</b>
+      </div>
+    `;
+  }).join("");
+
+  const sub=getSubtotal();
+  const del=getDelivery();
+
+  document.getElementById("subtotal").textContent=money(sub);
+  document.getElementById("delivery").textContent=money(del);
+  document.getElementById("grandTotal").textContent=money(sub+del);
+  summary.style.display="block";
+}
+
+function openCart(){
+  document.getElementById("cartDrawer").classList.add("open");
+  updateCartUI();
+}
+
+function closeCart(){
+  document.getElementById("cartDrawer").classList.remove("open");
+}
+
+function closeCartOutside(e){
+  if(e.target.id==="cartDrawer")closeCart();
+}
+
+function openCheckout(){
+  if(!cart.length){
+    showToast("আগে কিছু মুরগি কার্টে যোগ করুন");
+    return;
+  }
+  closeCart();
+  updateCheckoutTotals();
+  document.getElementById("checkoutModal").classList.add("open");
+}
+
+function closeCheckout(){
+  document.getElementById("checkoutModal").classList.remove("open");
+}
+
+function updateCheckoutTotals(){
+  const sub=getSubtotal();
+  const del=getDelivery();
+  document.getElementById("checkoutSubtotal").textContent=money(sub);
+  document.getElementById("checkoutDelivery").textContent=money(del);
+  document.getElementById("checkoutTotal").textContent=money(sub+del);
+}
+
+function createOrderId(){
+  const d=new Date();
+  const date=
+    String(d.getDate()).padStart(2,"0")+
+    String(d.getMonth()+1).padStart(2,"0")+
+    String(d.getFullYear()).slice(-2);
+  const random=Math.floor(1000+Math.random()*9000);
+  return "TBC-"+date+"-"+random;
+}
+
+function buildWhatsAppMessage(order){
+  let msg=
+`🐔 *THREE BROTHERS FRESH CHICKEN*
+━━━━━━━━━━━━━━━━━━
+*নতুন অর্ডার*
+
+🧾 Order ID: *${order.id}*
+
+👤 নাম: ${order.name}
+📱 ফোন: ${order.phone}
+📍 এলাকা: ${order.areaName}
+🏠 ঠিকানা: ${order.address}
+💳 Payment: ${order.payment}
+
+━━━━━━━━━━━━━━━━━━
+*অর্ডারের তালিকা*
+`;
+
+  order.items.forEach((item,i)=>{
+    msg+=`${i+1}. ${item.name} × ${item.qty} kg = ${money(item.total)}\n`;
+  });
+
+  msg+=`
+━━━━━━━━━━━━━━━━━━
+মোট: ${money(order.subtotal)}
+ডেলিভারি: ${money(order.delivery)}
+*সর্বমোট: ${money(order.total)}*
+
+📝 নির্দেশনা:
+${order.note||"কোনো অতিরিক্ত নির্দেশনা নেই"}
+
+ধন্যবাদ ❤️
+*Three Brothers Fresh Chicken*`;
+
+  return msg;
+}
+
+function processCheckout(e){
+  e.preventDefault();
+
+  if(!cart.length){
+    showToast("কার্ট খালি");
+    return;
+  }
+
+  const name=document.getElementById("customerName").value.trim();
+  const phone=document.getElementById("customerPhone").value.replace(/\D/g,"");
+  const area=document.getElementById("area").value;
+  const payment=document.getElementById("payment").value;
+  const address=document.getElementById("address").value.trim();
+  const note=document.getElementById("note").value.trim();
+
+  if(!name||phone.length!==10||!area||!address){
+    showToast("সব প্রয়োজনীয় তথ্য সঠিকভাবে দিন");
+    return;
+  }
+
+  const subtotal=getSubtotal();
+  const delivery=area==="naruli"?30:50;
+
+  const items=cart.map(item=>{
+    const p=products.find(x=>x.id===item.id);
+    return {
+      name:p.name,
+      qty:item.qty,
+      total:p.price*item.qty
+    };
+  });
+
+  const order={
+    id:createOrderId(),
+    name,phone,address,payment,note,
+    areaName:area==="naruli"?"Naruli Bazar":"অন্যান্য এলাকা",
+    subtotal,delivery,total:subtotal+delivery,
+    items,
+    createdAt:new Date().toISOString()
+  };
+
+  localStorage.setItem(
+    "threeBrothersLastOrder",
+    JSON.stringify(order)
+  );
+
+  const history=
+    JSON.parse(localStorage.getItem("threeBrothersOrders")||"[]");
+
+  history.unshift(order);
+
+  localStorage.setItem(
+    "threeBrothersOrders",
+    JSON.stringify(history.slice(0,20))
+  );
+
+  pendingWhatsApp=buildWhatsAppMessage(order);
+
+  document.getElementById("successOrderId").textContent=order.id;
+
+  closeCheckout();
+  document.getElementById("successModal").classList.add("open");
+
+  cart=[];
+  saveCart();
+  renderProducts();
+}
+
+function sendPendingWhatsApp(){
+  if(!pendingWhatsApp)return;
+
+  const url=
+    "https://wa.me/"+SHOP.whatsapp+
+    "?text="+encodeURIComponent(pendingWhatsApp);
+
+  window.open(url,"_blank");
+}
+
+function closeSuccess(){
+  document.getElementById("successModal").classList.remove("open");
+}
+
+function toggleFaq(btn){
+  const item=btn.parentElement;
+  item.classList.toggle("open");
+  btn.querySelector("span").textContent=
+    item.classList.contains("open")?"−":"+";
+}
+
+function toggleMenu(){
+  document.getElementById("navlinks").classList.toggle("mobile-open");
+}
+
+function scrollToProducts(){
+  document.getElementById("products").scrollIntoView({behavior:"smooth"});
+}
+
+function callShop(){
+  location.href="tel:+"+SHOP.whatsapp;
+}
+
+function openWhatsApp(){
+  const message=
+    "আসসালামু আলাইকুম। Three Brothers Fresh Chicken থেকে মুরগি সম্পর্কে জানতে চাই।";
+  window.open(
+    "https://wa.me/"+SHOP.whatsapp+"?text="+encodeURIComponent(message),
+    "_blank"
+  );
+}
+
+function openMap(){
+  window.open(SHOP.map,"_blank");
+}
+
+function showToast(text){
+  const toast=document.getElementById("toast");
+  toast.textContent=text;
+  toast.classList.add("show");
+  clearTimeout(window.toastTimer);
+  window.toastTimer=setTimeout(()=>{
+    toast.classList.remove("show");
+  },2500);
+}
+
+/* Search */
+document.getElementById("search").addEventListener("input",renderProducts);
+
+/* Delivery change */
+document.getElementById("area").addEventListener("change",updateCheckoutTotals);
+
+/* Checkout */
+document.getElementById("checkoutForm").addEventListener("submit",processCheckout);
+
+/* Header */
+window.addEventListener("scroll",()=>{
+  document.getElementById("header").classList.toggle("scrolled",window.scrollY>30);
+  document.getElementById("backTop").classList.toggle("show",window.scrollY>600);
+});
+
+/* Close modals */
+document.getElementById("checkoutModal").addEventListener("click",e=>{
+  if(e.target.id==="checkoutModal")closeCheckout();
+});
+document.getElementById("successModal").addEventListener("click",e=>{
+  if(e.target.id==="successModal")closeSuccess();
+});
+
+/* Timer until 10 PM */
+function updateTimer(){
+  const now=new Date();
+  const end=new Date();
+  end.setHours(22,0,0,0);
+
+  if(now>=end){
+    end.setDate(end.getDate()+1);
+    end.setHours(22,0,0,0);
+  }
+
+  let diff=end-now;
+
+  const h=Math.floor(diff/3600000);
+  diff%=3600000;
+  const m=Math.floor(diff/60000);
+  diff%=60000;
+  const s=Math.floor(diff/1000);
+
+  document.getElementById("hours").textContent=String(h).padStart(2,"0");
+  document.getElementById("mins").textContent=String(m).padStart(2,"0");
+  document.getElementById("secs").textContent=String(s).padStart(2,"0");
+}
+
+/* Reveal */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.12});
+
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+/* Escape */
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    closeCart();
+    closeCheckout();
+    closeSuccess();
+  }
+});
+
+/* Initial */
+document.getElementById("year").textContent=new Date().getFullYear();
+renderProducts();
+updateCartUI();
+loadProductsFromSupabase();
+updateTimer();
+setInterval(updateTimer,1000);
+</script>
+
+</body>
+</html>
