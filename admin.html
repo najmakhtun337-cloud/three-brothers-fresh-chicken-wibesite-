@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Three Brothers Fresh Chicken — Admin</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f6f1e7;color:#14231f}.wrap{max-width:900px;margin:auto;padding:22px}.brand{font-size:28px;font-weight:900}.muted{color:#66716c}.card{background:#fff;border:1px solid #ddd3c5;border-radius:20px;padding:20px;margin:16px 0;box-shadow:0 8px 30px #0000000b}h1,h2{margin-top:0}.login{max-width:480px;margin:8vh auto}.input,.btn{width:100%;padding:14px;border-radius:12px;border:1px solid #cfc6b8;font-size:16px;margin:7px 0}.btn{background:#b9271c;color:#fff;border:0;font-weight:800;cursor:pointer}.btn.secondary{background:#14231f}.row{display:flex;gap:10px;align-items:center}.row>*{flex:1}.product{display:grid;grid-template-columns:1.5fr .7fr .7fr auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #eee}.price{font-weight:900}.toggle{width:auto}.msg{padding:12px;border-radius:10px;margin:10px 0;display:none}.ok{background:#e5f5e8;color:#155b24}.err{background:#ffe7e4;color:#8b2018}@media(max-width:650px){.product{grid-template-columns:1fr 100px}.product .active,.product .save{grid-column:2}.row{flex-direction:column}.row>*{width:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="loginBox" class="card login">
+    <div class="brand">THREE BROTHERS<br>FRESH CHICKEN</div>
+    <p class="muted">Private Admin Panel</p>
+    <input id="email" class="input" type="email" placeholder="Admin email">
+    <input id="password" class="input" type="password" placeholder="Password">
+    <button class="btn" onclick="login()">LOGIN</button>
+    <div id="loginMsg" class="msg err"></div>
+  </div>
+
+  <main id="panel" style="display:none">
+    <div class="row">
+      <div><div class="brand">Admin Dashboard</div><div class="muted">Price ও shop settings এখান থেকে বদলাও</div></div>
+      <button class="btn secondary" style="max-width:130px" onclick="logout()">Logout</button>
+    </div>
+
+    <div id="msg" class="msg"></div>
+
+    <section class="card">
+      <h2>Products & Prices</h2>
+      <div id="products">Loading...</div>
+    </section>
+
+    <section class="card">
+      <h2>Delivery Charge</h2>
+      <div class="row">
+        <label>Naruli Bazar<br><input id="deliveryNaruli" class="input" type="number"></label>
+        <label>Other Area<br><input id="deliveryOther" class="input" type="number"></label>
+      </div>
+      <button class="btn" onclick="saveSettings()">SAVE DELIVERY</button>
+    </section>
+  </main>
+</div>
+
+<script>
+/* =====================================================
+   SUPABASE SETTINGS
+   এখানে তোমার নিজের Supabase তথ্য বসাবে।
+   ===================================================== */
+const SUPABASE_URL = "PASTE_YOUR_SUPABASE_PROJECT_URL_HERE";
+const SUPABASE_ANON_KEY = "PASTE_YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY_HERE";
+
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+async function login(){
+  const email=document.getElementById('email').value.trim();
+  const password=document.getElementById('password').value;
+  const box=document.getElementById('loginMsg');
+  box.style.display='none';
+  if(!email||!password){return showLogin('Email ও password দাও।')}
+  const {data,error}=await sb.auth.signInWithPassword({email,password});
+  if(error) return showLogin(error.message);
+  const user=data.user;
+  const {data:admin,error:ae}=await sb.from('admins').select('user_id').eq('user_id',user.id).maybeSingle();
+  if(ae||!admin){await sb.auth.signOut();return showLogin('এই account-টি admin নয়।')}
+  openPanel();
+}
+function showLogin(t){const b=document.getElementById('loginMsg');b.textContent=t;b.style.display='block'}
+async function logout(){await sb.auth.signOut();location.reload()}
+async function openPanel(){document.getElementById('loginBox').style.display='none';document.getElementById('panel').style.display='block';await loadAll()}
+async function loadAll(){await loadProducts();await loadSettings()}
+
+async function loadProducts(){
+  const box=document.getElementById('products');
+  const {data,error}=await sb.from('products').select('*').order('sort_order',{ascending:true});
+  if(error){box.innerHTML='<p>'+esc(error.message)+'</p>';return}
+  if(!data.length){box.innerHTML='<p>No products found.</p>';return}
+  box.innerHTML=data.map(p=>`
+    <div class="product">
+      <strong>${esc(p.name)}</strong>
+      <input class="input price" id="price-${esc(p.id)}" type="number" min="0" step="1" value="${Number(p.price)||0}">
+      <label class="active"><input id="active-${esc(p.id)}" type="checkbox" ${p.active?'checked':''}> Active</label>
+      <button class="btn save" onclick="saveProduct('${js(p.id)}')">SAVE</button>
+    </div>`).join('');
+}
+async function saveProduct(id){
+  const price=Number(document.getElementById('price-'+id).value);
+  const active=document.getElementById('active-'+id).checked;
+  if(!Number.isFinite(price)||price<0)return notice('সঠিক price দাও।',false);
+  const {error}=await sb.from('products').update({price,active}).eq('id',id);
+  if(error)return notice(error.message,false);
+  notice('Price successfully updated ✅',true);
+}
+
+async function loadSettings(){
+  const {data,error}=await sb.from('settings').select('key,value').in('key',['delivery_naruli','delivery_other']);
+  if(error)return notice(error.message,false);
+  const map={};(data||[]).forEach(x=>map[x.key]=x.value);
+  document.getElementById('deliveryNaruli').value=Number(map.delivery_naruli??30);
+  document.getElementById('deliveryOther').value=Number(map.delivery_other??50);
+}
+async function saveSettings(){
+  const rows=[
+    {key:'delivery_naruli',value:Number(document.getElementById('deliveryNaruli').value)},
+    {key:'delivery_other',value:Number(document.getElementById('deliveryOther').value)}
+  ];
+  const {error}=await sb.from('settings').upsert(rows,{onConflict:'key'});
+  if(error)return notice(error.message,false);
+  notice('Delivery charge updated ✅',true);
+}
+function notice(t,ok){const b=document.getElementById('msg');b.textContent=t;b.className='msg '+(ok?'ok':'err');b.style.display='block';setTimeout(()=>b.style.display='none',3000)}
+function esc(v){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function js(v){return String(v).replace(/\\/g,'\\\\').replace(/'/g,"\\'")}
+
+(async()=>{const {data}=await sb.auth.getSession();if(data.session){const {data:a}=await sb.from('admins').select('user_id').eq('user_id',data.session.user.id).maybeSingle();if(a)openPanel();}})();
+</script>
+</body>
+</html>
