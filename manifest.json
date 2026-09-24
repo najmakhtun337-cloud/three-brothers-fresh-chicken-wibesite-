@@ -10,7 +10,7 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "./app-icon.png",
+      "src": "https://files.catbox.moe/3p29i9.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
